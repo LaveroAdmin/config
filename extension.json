@@ -1,0 +1,60 @@
+{
+    "name": "laveroadmin/config",
+    "title": {
+        "en": "Config Manager",
+        "ru": "Менеджер конфигураций"
+    },
+    "description": {
+        "en": "Manage dynamic application settings stored in database and cached in runtime.",
+        "ru": "Управление динамическими параметрами конфигурации приложения с сохранением в базе данных."
+    },
+    "category": "tools",
+    "icon": "icon-toggle-on",
+    "version": "1.0.0",
+    "author": {
+        "name": "Aleksandr Kireev",
+        "email": "hello@bespredel.name",
+        "url": "https://bespredel.name"
+    },
+    "github": "https://github.com/LaveroAdmin/config",
+    "setup": {
+        "commands": [
+            {
+                "cmd": "php artisan admin:import config",
+                "desc": {
+                    "en": "Import settings migrations and admin menu",
+                    "ru": "Импорт миграций и меню конфигураций"
+                }
+            }
+        ],
+        "config": {
+            "file": "config/admin.php",
+            "code": "'config' => [\n    'enable' => true,\n],"
+        },
+        "requirements": {
+            "en": [
+                "PHP >= 8.1"
+            ],
+            "ru": [
+                "PHP >= 8.1"
+            ]
+        },
+        "notes": {
+            "en": [
+                "To load stored settings at boot, call: \\LaveroAdmin\\Config\\Config::load() in your AppServiceProvider boot() method."
+            ],
+            "ru": [
+                "Для загрузки сохраненных параметров в рантайм приложения вызовите: \\LaveroAdmin\\Config\\Config::load() в методе boot() вашего AppServiceProvider."
+            ]
+        }
+    },
+    "key": "config",
+    "compatibility": {
+        "php": ">=8.1",
+        "laravel": "^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "admin": "^1.0",
+        "extensions": [
+            "pdo"
+        ]
+    }
+}
