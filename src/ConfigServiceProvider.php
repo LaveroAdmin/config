@@ -11,6 +11,7 @@ class ConfigServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'lavero-admin-config');
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'lavero-admin-config');
 
         if ($this->app->runningInConsole()) {

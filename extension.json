@@ -10,7 +10,7 @@
     },
     "category": "tools",
     "icon": "icon-toggle-on",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "author": {
         "name": "Aleksandr Kireev",
         "email": "hello@bespredel.name",
@@ -20,10 +20,17 @@
     "setup": {
         "commands": [
             {
+                "cmd": "php artisan migrate",
+                "desc": {
+                    "en": "Create and update the admin_config database table",
+                    "ru": "Создание и обновление таблицы admin_config в базе данных"
+                }
+            },
+            {
                 "cmd": "php artisan admin:import config",
                 "desc": {
-                    "en": "Import settings migrations and admin menu",
-                    "ru": "Импорт миграций и меню конфигураций"
+                    "en": "Import settings menu item and permissions",
+                    "ru": "Импорт пункта меню и прав доступа конфигураций"
                 }
             }
         ],
@@ -41,10 +48,12 @@
         },
         "notes": {
             "en": [
-                "To load stored settings at boot, call: \\LaveroAdmin\\Config\\Config::load() in your AppServiceProvider boot() method."
+                "To load stored settings into Laravel config at boot, call \\LaveroAdmin\\Admin\\Config\\Config::load() in your AppServiceProvider::boot() method (guarded with Schema::hasTable).",
+                "Example: if (Schema::hasTable(config('admin.extensions.config.table', 'admin_config'))) { \\LaveroAdmin\\Admin\\Config\\Config::load(); }"
             ],
             "ru": [
-                "Для загрузки сохраненных параметров в рантайм приложения вызовите: \\LaveroAdmin\\Config\\Config::load() в методе boot() вашего AppServiceProvider."
+                "Для загрузки сохранённых параметров в config() при старте приложения вызовите \\LaveroAdmin\\Admin\\Config\\Config::load() в методе AppServiceProvider::boot() (с проверкой Schema::hasTable).",
+                "Пример: if (Schema::hasTable(config('admin.extensions.config.table', 'admin_config'))) { \\LaveroAdmin\\Admin\\Config\\Config::load(); }"
             ]
         }
     },
